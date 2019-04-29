@@ -1,0 +1,102 @@
+#loginBody{
+    background-color: #ebebeb;
+    display: flex;
+    flex-wrap: wrap;
+    min-height: 100vh;
+}
+#formCenter {
+    width: 100%;
+}
+
+#formWrapper{
+    margin: auto;   
+    margin-top: 5%;
+    position: relative;
+    padding: 55px 85px 55px 85px;
+    width: 560px;
+    background: white;
+    border-radius: 10px;
+
+}
+
+
+#email{
+    font-family: Raleway-Medium;
+    line-height: 1.2;
+    font-size: 18px;
+    display: block;
+    width: 90%;
+    height: 55px;
+    padding: 0 25px 0 25px;
+    background: transparent;
+}
+
+
+
+#password{
+    font-family: Raleway-Medium;
+    line-height: 1.2;
+    font-size: 18px;
+    display: block;
+    width: 90%;
+    height: 55px;
+    padding: 0 25px 0 25px;
+    background: transparent;
+}
+
+p{
+    margin: 0;
+    padding: 0;
+}
+
+#labelPassword {
+    margin-top: 10px;
+    margin-bottom: 0px;
+    padding: 0;
+    font-size: 22px;
+}
+#labelEmail {
+    margin-top: 10px;
+    margin-bottom: 0px;
+    padding: 0;
+    font-size: 22px;
+}
+
+#formTitle{
+    font-family: Raleway-Medium;
+    font-size: 30px;
+    color: #555555;
+    line-height: 1.2;
+    text-transform: uppercase;
+    text-align: left;
+    width: 100%;
+    display: block;
+}
+
+#loginSubmit{
+    margin-top: 10px;
+    border: none;
+    text-decoration: none;
+    text-align: center;
+    border-radius: 5px;
+    padding: 10px;
+    display: inline-block;
+}
+#registerButton{
+    margin-top: 10px;
+    border: none;
+    text-decoration: none;
+    text-align: center;
+    border-radius: 5px;
+    padding: 10px;
+    display: inline-block;
+    float: right;
+}
+
+#registerButton:hover{
+    box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 6px 0 rgba(0,0,0,0.19);
+}
+
+#loginSubmit:hover{
+    box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 6px 0 rgba(0,0,0,0.19);
+}
