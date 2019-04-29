@@ -1,5 +1,6 @@
+/// <reference path="../../../node_modules/bingmaps/types/MicrosoftMaps/Microsoft.Maps.All.d.ts" />
 import { Component, OnInit } from '@angular/core';
-import { SSL_OP_MICROSOFT_BIG_SSLV3_BUFFER } from 'constants';
+
 
 @Component({
   selector: 'app-map',
@@ -8,13 +9,20 @@ import { SSL_OP_MICROSOFT_BIG_SSLV3_BUFFER } from 'constants';
 })
 export class MapComponent implements OnInit {
 
-  constructor() { }
+  constructor() {
+  }
 
   ngOnInit() {
 
-    /*var map
+  }
 
-    map = new Microsoft*/
+
+  ngAfterViewInit() {
+    setTimeout(() => {
+    var map = new Microsoft.Maps.Map(document.getElementById('mapBody'), {
+      credentials: 'Aldes22t6EfUj8rrbjsc6wwjvCTabWgcmCjHLDHw3ffZWrdaeLnRgt6uKPs2kAD5'
+    });
+  }, 300);
 
   }
 
