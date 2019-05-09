@@ -3,7 +3,9 @@ import { FormBuilder, Validators } from '@angular/forms';
 import { ApiService } from '../../services/api.service';
 import { Router } from '@angular/router';
 import { AuthService } from '../../auth/auth.service';
-import { MapComponent } from '../map.component';
+import {MatDialog, MatDialogRef, MAT_DIALOG_DATA} from '@angular/material';
+import { NgbActiveModal, NgbModal } from '@ng-bootstrap/ng-bootstrap';
+
 
 @Component({
   selector: 'app-addpinpoint',
@@ -14,7 +16,7 @@ export class AddpinpointComponent implements OnInit {
 
   addPointForm;
 
-  constructor(private fb: FormBuilder, private apiService: ApiService, private router: Router, private authService: AuthService, private mapLoad: MapComponent) { }
+  constructor(private fb: FormBuilder, private apiService: ApiService, private router: Router, private authService: AuthService, public activeModal: NgbActiveModal) { }
 
   ngOnInit() {
     this.addPointForm = this.fb.group({
@@ -24,7 +26,10 @@ export class AddpinpointComponent implements OnInit {
       subTitle: ['', Validators.required],
       text: ['', Validators.required]
     });
+  
   }
+
+
   onSubmit(form) {
     if (form.valid) {
 
@@ -38,7 +43,7 @@ export class AddpinpointComponent implements OnInit {
       }
       this.apiService.addPoint(newPin).subscribe(response => {
         console.log(response);
-        this.mapLoad.loadMap();
+        
       });
       
     }

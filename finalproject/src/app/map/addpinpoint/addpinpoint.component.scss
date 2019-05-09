@@ -1,19 +1,22 @@
 #addPointBody{
+    margin-right: auto;
+    margin-left: auto;
+    width: 100%;
     background-color: #ebebeb;
-    display: flex;
-    flex-wrap: wrap;
-    min-height: 100vh;
+    height: 500px;
+    padding-top: 5px;
+    padding-bottom: 5px;
 }
 
 #addPointFormWrapper{
+    
     margin: auto;   
-    margin-top: 5%;
-    position: relative;
+    margin-top: 3%;
     padding: 55px 85px 55px 85px;
     width: 560px;
     background: white;
     border-radius: 10px;
-
+    height: 300px;
 }
 
 #formCenter {

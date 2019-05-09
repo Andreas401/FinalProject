@@ -4,6 +4,9 @@ import { FormBuilder, Validators } from '@angular/forms';
 import { ApiService } from '../services/api.service';
 import { Router } from '@angular/router';
 import { AuthService } from '../auth/auth.service';
+import {MatDialog, MatDialogRef, MAT_DIALOG_DATA} from '@angular/material';
+import { AddpinpointComponent } from './addpinpoint/addpinpoint.component';
+import { NgbActiveModal, NgbModal } from '@ng-bootstrap/ng-bootstrap';
 
 
 @Component({
@@ -16,7 +19,7 @@ export class MapComponent implements OnInit {
 
   map;
 
-  constructor(private fb: FormBuilder, private apiService: ApiService, private router: Router, private authService: AuthService) {
+  constructor(private fb: FormBuilder, private apiService: ApiService, private router: Router, private authService: AuthService, public modalService: NgbModal) {
   }
 
   loadMap(){
@@ -68,6 +71,12 @@ export class MapComponent implements OnInit {
 
     }, 300);
 
+  }
+
+  openModal(){
+    this.modalService.dismissAll();
+    const modalRef = this.modalService.open(AddpinpointComponent);
+    modalRef.componentInstance.name = 'world';
   }
 
 
