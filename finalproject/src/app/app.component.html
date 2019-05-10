@@ -2,11 +2,12 @@
 
 <ul id="topMenu">
     <li><a style="float: left" routerLink="home">Home</a></li>
-    <li><a routerLink="login">Login</a></li>
+    <li><a routerLink="login" *ngIf="!authService.isLoggedIn">Login</a></li>
+    <li><a *ngIf="authService.isLoggedIn" (click)="clickLogout()">Logout</a></li>
     <li><a routerLink="demo">Demo</a></li>
 
 </ul>
-<ul id="sideMenu">
+<ul id="sideMenu" *ngIf="authService.isLoggedIn">
     <li><a routerLink="map">Map</a></li>
     <li><a routerLink="addAdeunis">Adeunis</a></li>
 </ul>
