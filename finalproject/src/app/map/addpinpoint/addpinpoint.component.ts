@@ -5,6 +5,7 @@ import { Router } from '@angular/router';
 import { AuthService } from '../../auth/auth.service';
 import {MatDialog, MatDialogRef, MAT_DIALOG_DATA} from '@angular/material';
 import { NgbActiveModal, NgbModal } from '@ng-bootstrap/ng-bootstrap';
+import { MapComponent } from '../map.component';
 
 
 @Component({
@@ -16,7 +17,7 @@ export class AddpinpointComponent implements OnInit {
 
   addPointForm;
 
-  constructor(private fb: FormBuilder, private apiService: ApiService, private router: Router, private authService: AuthService, public activeModal: NgbActiveModal) { }
+  constructor(private fb: FormBuilder, private apiService: ApiService, private router: Router, private authService: AuthService, private map: MapComponent) { }
 
   ngOnInit() {
     this.addPointForm = this.fb.group({
@@ -43,7 +44,7 @@ export class AddpinpointComponent implements OnInit {
       }
       this.apiService.addPoint(newPin).subscribe(response => {
         console.log(response);
-        
+        this.map.loadMap();
       });
       
     }

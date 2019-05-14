@@ -12,7 +12,7 @@ import { LoginComponent } from './login/login.component';
 import { MapComponent } from './map/map.component';
 import { DemoComponent } from './demo/demo.component';
 import { AddpinpointComponent } from './map/addpinpoint/addpinpoint.component';
-import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 @NgModule({
   declarations: [
