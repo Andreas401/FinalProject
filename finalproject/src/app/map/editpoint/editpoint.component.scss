@@ -1,0 +1,58 @@
+#addPointBody{
+    margin-right: auto;
+    margin-left: auto;
+    width: 100%;
+    background-color: #ebebeb;
+    height: 500px;
+    padding-top: 5px;
+    padding-bottom: 5px;
+}
+
+#addPointFormWrapper{
+    
+    margin: auto;   
+    margin-top: 3%;
+    padding: 55px 85px 55px 85px;
+    width: 560px;
+    background: white;
+    border-radius: 10px;
+    height: 300px;
+}
+
+#formCenter {
+    width: 100%;
+}
+
+#closeButton{
+    margin-top: 35px;
+    border: none;
+    text-decoration: none;
+    text-align: center;
+    border-radius: 5px;
+    padding: 10px;
+    display: block;
+    background-color: #333;
+    color: white;
+    
+}
+#editSubmit{
+    margin-top: 55px;
+    border: none;
+    text-decoration: none;
+    text-align: center;
+    border-radius: 5px;
+    padding: 10px;
+    color: white;
+    display: inline-block;
+    background-color: #333;
+    float: right;
+    margin-right: 195px
+}
+
+#editSubmit:hover{
+    box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 6px 0 rgba(0,0,0,0.19);
+}
+
+#closeButton:hover{
+    box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 6px 0 rgba(0,0,0,0.19);
+}

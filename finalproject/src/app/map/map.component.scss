@@ -14,7 +14,19 @@
     width: 72px;
     display:inline-block;
     height: 100vh;
-    margin-top: 96px;
+    margin-top: 48px;
+  }
+
+  #pickPointFirst{
+    text-align: center;
+    color: black;
+    background-color: white;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    font-size: 35px;
+    width: 500px;
+    margin-right: auto;
+    margin-left: auto;
   }
 
   #sideMenus li a{

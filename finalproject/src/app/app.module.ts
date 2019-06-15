@@ -10,9 +10,10 @@ import { AppComponent } from './app.component';
 import { HomeComponent } from './home/home.component';
 import { LoginComponent } from './login/login.component';
 import { MapComponent } from './map/map.component';
-import { DemoComponent } from './demo/demo.component';
 import { AddpinpointComponent } from './map/addpinpoint/addpinpoint.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { RegisterComponent } from './register/register.component';
+import { EditpointComponent } from './map/editpoint/editpoint.component';
 
 @NgModule({
   declarations: [
@@ -20,8 +21,9 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
     HomeComponent,
     LoginComponent,
     MapComponent,
-    DemoComponent,
-    AddpinpointComponent
+    AddpinpointComponent,
+    RegisterComponent,
+    EditpointComponent
   ],
   imports: [
     BrowserModule,

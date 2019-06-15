@@ -1,13 +1,17 @@
 <div id="loginBody">
   <div id="formWrapper">
     <form id="formCenter" novalidate [formGroup]="loginForm" (ngSubmit)="onSubmit(loginForm)">
-      <span id="formTitle">Account sign in</span>
+      <span id="formTitle">Bruger login</span>
       <p id="labelEmail">Email: </p>
       <input id="email" name="email" formControlName="email"><br>
+      <div class="mustFillError" *ngIf="loginForm.controls.email.touched && loginForm.controls.email.errors?.required">Email skal udfyldes</div>
       <p id="labelPassword">Password: </p>
       <input type="password" id="password" name="password" formControlName="password"><br>
+      <div class="mustFillError" *ngIf="loginForm.controls.password.touched && loginForm.controls.password.errors?.required">Password skal udfyldes</div>
       <button id="loginSubmit">Login</button>
-      <button id="registerButton">Register</button>
+      <button id="registerButton" (click)="registerButton()">Register</button>
     </form>
+    <div class="wrongCredentials" *ngIf="credentials">Forkert brugernavn eller password</div>
   </div>
+
 </div>

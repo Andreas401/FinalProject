@@ -1,0 +1,50 @@
+#registerBody{
+    background-color: #ebebeb;
+    display: flex;
+    flex-wrap: wrap;
+    min-height: 100vh;
+}
+
+#registerFormWrapper{
+    
+    margin: auto;   
+    margin-top: 3%;
+    padding: 55px 85px 55px 85px;
+    width: 560px;
+    background: white;
+    border-radius: 10px;
+    height: 450px;
+}
+
+#formCenter {
+    width: 100%;
+}
+
+#registerSubmit{
+    float: right;
+    margin-top: 50px;
+    margin-right: 195px;
+    background-color: #333;
+    color: white;
+    border-radius: 5px;
+    padding: 10px;
+    border: none;
+}
+
+.hiddenBox{
+    height: 18px;
+    width: 10px;
+    visibility: hidden;
+}
+
+.mustFillError{
+    border-style: solid;
+    border-color: black;
+    border-width: 2px;
+    text-align: center;
+    width: 170px;
+}
+
+#registerSubmit:hover{
+    box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 6px 0 rgba(0,0,0,0.19);
+}

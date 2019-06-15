@@ -2,9 +2,6 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
 import { ApiService } from '../../services/api.service';
 import { Router } from '@angular/router';
-import { AuthService } from '../../auth/auth.service';
-import {MatDialog, MatDialogRef, MAT_DIALOG_DATA} from '@angular/material';
-import { NgbActiveModal, NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { MapComponent } from '../map.component';
 
 
@@ -17,12 +14,11 @@ export class AddpinpointComponent implements OnInit {
 
   addPointForm;
 
-  constructor(private fb: FormBuilder, private apiService: ApiService, private router: Router, private authService: AuthService, private map: MapComponent) { }
+  constructor(private fb: FormBuilder, private apiService: ApiService, private router: Router, private map: MapComponent) { }
 
   ngOnInit() {
     this.addPointForm = this.fb.group({
-      coorA: ['', Validators.required],
-      coorB: ['', Validators.required],
+      adresse: ['', Validators.required],
       title: ['', Validators.required],
       subTitle: ['', Validators.required],
       text: ['', Validators.required]
@@ -30,22 +26,35 @@ export class AddpinpointComponent implements OnInit {
   
   }
 
+  //Closing the add point view
+  close(){
+    this.router.navigateByUrl('/map');
+  }
 
   onSubmit(form) {
     if (form.valid) {
 
       var newPin = {
+        "adresse": form.value.adresse,
         "title": form.value.title,
         "subTitle": form.value.subTitle,
         "text": form.value.text,
-        "coorA": form.value.coorA,
-        "coorB": form.value.coorB,
+        "coorA": 0,
+        "coorB": 0,
         "orgid": 1
       }
-      this.apiService.addPoint(newPin).subscribe(response => {
-        console.log(response);
-        this.map.loadMap();
+
+      //Using the api from dev.virtualearth to make it get longitude and latitude by adress
+      this.apiService.getLocationByAddress(newPin.adresse).subscribe(response => {
+        //console.log(response.resourcesSets[0].resources[0].point.coordinates);
+        newPin.coorA = response["resourceSets"][0].resources[0].point.coordinates[0];
+        newPin.coorB = response["resourceSets"][0].resources[0].point.coordinates[1];
+        //Using api to add a new point
+        this.apiService.addPoint(newPin).subscribe(response => {
+          this.map.loadMap();
+        });
       });
+
       
     }
   }

@@ -1,10 +1,15 @@
+<script type='text/javascript' src='https://www.bing.com/api/maps/mapcontrol?callback=GetMap' async defer></script>
 <ul id="sideMenus">
-    <li><a routerLink="addpinpoint">Add pin</a></li>
+    <li><a class="addPoint" routerLink="addpinpoint">Add pin</a></li>
+    <li><a (click)="deletePins()">Delete</a></li>
+    <li><a (click)="goToEdit()">Edit pin</a></li>
 </ul>
 <div style="background-color: #333;">
+    <div *ngIf="!canEdit" id="pickPointFirst">Vælg et punkt først for at rette eller slette</div>
     <div id="mapBody">
-
+        
     </div>
+    
 
     <router-outlet></router-outlet>
 

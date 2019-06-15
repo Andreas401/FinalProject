@@ -1,0 +1,86 @@
+module.exports = {
+    Decoder: function(bytes, port) {
+        //Function to convert from hex to binary
+        function Hex2Bin(n) { if (!checkHex(n)) return 0; var binstr = ""; for (var i = 0; i < n.length; i += 2) { binstr += parseInt(n[i] + n[i + 1], 16).toString(2); } return binstr; }
+        
+
+        function checkHex(n) { return /^[0-9A-Fa-f]{1,64}$/.test(n); }
+        //Function to make the binary to array
+        function Bin2Arr(str) { var a = new Array(str.length); for (var i = 0; i < str.length; i++) { a[i] = (str.toString().substr(i, 1) == "1" ? 1 : 0); } return a; }
+        
+        //If NaN make it 0 else return number
+        function fixNaN(i) { if (isNaN(i)) { return 0; } else { return i; } }
+        
+        //Function to convert string to array
+        function Str2HexArr(s) {
+            var a = new Array(0);
+            for (var i = 0; i < s.length; i++) {
+                a.push(s[i].toString(16));
+            }
+            return a;
+        }
+
+        var payload = {};
+        //payload.payload_raw = bytes;
+        payload.payload_decrypt = Str2HexArr(bytes).join('');
+
+        function parsePayload(payload) {
+            var str = payload.payload_decrypt;
+            var a = Hex2Bin(str);
+            var arr = Bin2Arr(a);
+
+            
+            payload.ranger = {
+                'status': {
+                    "gps": fixNaN(arr[3]),
+                }
+            };
+
+            var i = 16;
+
+            /* if (payload.ranger.status.temperature) {
+                 payload.ranger.T = (Bin2Dec(arr[i++]) ? -1 : 1) * Bin2Dec(a.substr(i, 7));
+                 i += 8;
+             }*/
+
+            if (payload.ranger.status.gps) {
+                // Get latitude
+                payload.ranger.gps = str.substr(i / 4, 16);
+                var lat_d = parseInt(str.substr(i / 4, 2));
+                i += 8;
+                var lat_m = parseInt(str.substr(i / 4, 2));
+                i += 8;
+                var lat_s = (parseInt(str.substr(i / 4, 3)));
+                i += 12;
+                var sign = (str.substr(1 / 4, 1) == "1" ? -1 : 1);
+                i += 4;
+                payload.ranger.lat = sign * (lat_d + (lat_m / 60) + (lat_s / 60000));
+
+                // Get longitude
+                var lon_d = parseInt(str.substr(i / 4, 2));
+                i += 8;
+                var lon_m = parseInt(str.substr(i / 4, 2));
+                i += 8;
+                var lon_s = parseInt(str.substr(i / 4, 2));
+                i += 8;
+                payload.ranger.lon_d = lon_d;
+                payload.ranger.lon_m = lon_m;
+                payload.ranger.lon_s = lon_s;
+                if (typeof lon_s !== "number") lon_s = 0;
+                if (typeof lon_m !== "number") lon_m = 0;
+                if (typeof lon_d !== "number") lon_d = 0;
+                sign = (str.substr(i / 4, 1) == "1" ? -1 : 1);
+                payload.ranger.lon_dir = (sign == -1 ? "W" : "E");
+                i += 4;
+                payload.ranger.lon = sign * (lon_d + (lon_m / 60) + (lon_s / 6000));
+
+            }
+
+
+            return payload;
+        }
+
+        return parsePayload(payload);
+    }
+
+}

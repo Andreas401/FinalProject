@@ -1,0 +1,23 @@
+<div id="addPointBody">
+  <div id="addPointFormWrapper">
+    <h1 style="width: 100%; text-align: center">Rediger punkt</h1>
+    <form id="formCenter" style="margin-left: 72px;" novalidate [formGroup]="editpointForm" (ngSubmit)="onSubmit(editpointForm)">
+      <div>
+        <div style="display: inline-block;">
+          <p>Title</p>
+          <input id="title" name="title" formControlName="title">
+        </div>
+        <div style="display: inline-block; margin-left: 20px;">
+          <p>Subtitle</p>
+          <input id="subTitle" name="subTitle" formControlName="subTitle">
+        </div>
+      </div>
+      <p>Text</p>
+      <input id="text" name="text" formControlName="text">
+      <button id="editSubmit">Rediger</button>
+      <button type="button" id="closeButton" class="btn btn-outline-dark" (click)="close()">Luk</button>
+    </form>
+    
+  </div>
+
+</div>

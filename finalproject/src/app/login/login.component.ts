@@ -12,11 +12,10 @@ import { AuthService } from '../auth/auth.service';
 export class LoginComponent implements OnInit {
 
   loginForm;
+  credentials = false;
   constructor(private fb: FormBuilder, private apiService: ApiService, private router: Router, private authService: AuthService) {
 
   }
-
-
 
   ngOnInit() {
 
@@ -27,6 +26,11 @@ export class LoginComponent implements OnInit {
 
   }
 
+  //Go to register view
+  registerButton(){
+    this.router.navigate(["/register"]);
+  }
+
 
   onSubmit(form) {
     if (form.valid) {
@@ -34,16 +38,22 @@ export class LoginComponent implements OnInit {
         "email": form.value.email,
         "password": form.value.password
       }
+
+      //Using api service to login
       this.apiService.login(user).subscribe(response => {
-        console.log(response);
-        if (response == '200') {
+        var json;
+        json = JSON.parse(response);
+        if (json.code == 200) {
+          //Using authService to set variables to let system know you are logged in
           this.authService.login().subscribe(result => {
             window.localStorage.setItem("isLoggedIn", "true");
+            window.localStorage.setItem("orgid", json.orgid);
             this.router.navigate(['/map']);
           });
 
         } else {
           console.log("wrong credentials");
+          this.credentials = true;
         }
       });
 

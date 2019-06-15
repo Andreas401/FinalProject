@@ -81,6 +81,8 @@ p{
     border-radius: 5px;
     padding: 10px;
     display: inline-block;
+    background-color: #333;
+    color: white;
 }
 #registerButton{
     margin-top: 10px;
@@ -89,7 +91,9 @@ p{
     text-align: center;
     border-radius: 5px;
     padding: 10px;
+    color: white;
     display: inline-block;
+    background-color: #333;
     float: right;
 }
 
@@ -99,4 +103,22 @@ p{
 
 #loginSubmit:hover{
     box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 6px 0 rgba(0,0,0,0.19);
+}
+
+.mustFillError{
+    border-style: solid;
+    border-color: black;
+    border-width: 2px;
+    text-align: center;
+    width: 170px;
+}
+.wrongCredentials{
+    border-style: solid;
+    border-color: black;
+    border-width: 2px;
+    text-align: center;
+    width: 255px;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 10px;
 }

@@ -1,0 +1,77 @@
+<div id="registerBody">
+  <div id="registerFormWrapper">
+    <h1 style="width: 100%; text-align: center">Registrer</h1>
+    <div *ngIf="userExist" style="text-align: center; width: 100%">Der eksisterer allerede en bruger med denne email</div>
+    <form id="formCenter" style="margin-left: 72px;" novalidate [formGroup]="registerForm"
+      (ngSubmit)="onSubmit(registerForm)">
+      
+      <div>
+        <div style="display: inline-block">
+          <p>Navn</p>
+          <input id="navn" name="navn" formControlName="navn">
+          <div class="mustFillError"
+            *ngIf="registerForm.controls.navn.touched && registerForm.controls.navn.errors?.required">Udfyld navn
+          </div>
+          <div class="hiddenBox" *ngIf="!registerForm.controls.navn.touched || registerForm.controls.navn.dirty">Hidden
+          </div>
+        </div>
+        <div style=" display: inline-block; margin-left: 20px;">
+          <p>Email</p>
+          <input id="email" name="email" formControlName="email">
+          <div class="mustFillError"
+            *ngIf="registerForm.controls.email.touched && registerForm.controls.email.errors?.required">Udfyld email
+          </div>
+          <div class="hiddenBox" *ngIf="!registerForm.controls.email.touched || registerForm.controls.email.dirty">
+            Hidden
+          </div>
+        </div>
+      </div>
+      <div>
+        <div style="display: inline-block;">
+          <p>Password</p>
+          <input type="password" id="password" name="password" formControlName="password">
+          <div class="mustFillError"
+            *ngIf="registerForm.controls.password.touched && registerForm.controls.password.errors?.required">Udfyld
+            password</div>
+          <div class="hiddenBox"
+            *ngIf="!registerForm.controls.password.touched || registerForm.controls.password.dirty">Hidden
+          </div>
+
+        </div>
+        <div style="display: inline-block; margin-left: 20px;">
+          <p>Re-password</p>
+          <input type="password" id="repassword" name="repassword" formControlName="repassword">
+          <div class="mustFillError"
+            *ngIf="registerForm.controls.repassword.touched && registerForm.controls.repassword.errors?.required">
+            Udfyld Re-password</div>
+          <div class="hiddenBox"
+            *ngIf="!registerForm.controls.repassword.touched || registerForm.controls.repassword.dirty">Hidden
+          </div>
+
+          <div class="mustFillError" *ngIf="!repasswordMatch">Passwords does not match</div>
+        </div>
+      </div>
+      <div>
+        <div style="display: inline-block;">
+          <p>Vælg kommune</p>
+          <select id="selectKommune" name="selectKommune" formControlName="selectKommune">
+            <option>Vælg kommune</option>
+          </select>
+          <div class="mustFillError"
+            *ngIf="registerForm.controls.selectKommune.touched && registerForm.controls.selectKommune.errors?.required">
+            Vælg
+            en kommune</div>
+          <div class="hiddenBox"
+            *ngIf="!registerForm.controls.selectKommune.touched || registerForm.controls.selectKommune.dirty">Hidden
+          </div>
+
+        </div>
+        <button id="registerSubmit" >Registrer</button>
+      </div>
+
+
+    </form>
+    
+  </div>
+
+</div>

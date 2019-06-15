@@ -1,8 +1,13 @@
 {
     "dependencies": {
         "bcrypt": "^3.0.2",
+        "bcryptjs": "^2.4.3",
         "body-parser": "^1.18.3",
         "express": "4.16.4",
+        "fs": "0.0.1-security",
+        "mqtt": "^2.18.8",
+        "node": "^12.2.0",
+        "nodejs": "0.0.0",
         "pg": "^7.10.0"
     }
 }
