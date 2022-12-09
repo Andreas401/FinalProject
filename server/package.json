@@ -3,7 +3,7 @@
         "bcrypt": "^3.0.2",
         "bcryptjs": "^2.4.3",
         "body-parser": "^1.18.3",
-        "express": "4.16.4",
+        "express": "4.17.3",
         "fs": "0.0.1-security",
         "mqtt": "^2.18.8",
         "node": "^12.2.0",
